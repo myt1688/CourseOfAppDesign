@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>《移动网络应用开发》期末设计简明教程</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0">《移动网络应用开发》期末设计简明教程</h1>
+
+<p><strong><em>在开始阅读此教程之前，请知晓以下几点：</em></strong><br></p>
+
+<blockquote>
+<ul>
+<li>本教程的代码均是源自mui框架示例代码以及老师教学代码，需要读者通过本教程理解这些代码之后再编写自己的程序</li>
+<li>本教程会给出实现期末设计的逻辑思路，但没有<strong>设计的代码</strong></li>
+<li>本教程只适合想要通过学习来完成设计的同学，想要简单快速完成设计的同学请出门左转，本教程不适合你</li>
+<li><p>任何关于逻辑上的问题可以联系本教程作者，但关于编程基础问题例如：变量、函数、控制语句等请自行百度学习</p>
+
+<p><strong>以上！</strong></p></li>
+</ul>
+</blockquote>
+
+<p><br></p>
+
+<h3 id="toc_1">好了，那让我们来愉快的开始吧！</h3>
+
+<p><br></p>
+
+<h2 id="toc_2">期末设计模块</h2>
+
+<p><strong>期末设计大致可以分为以下四个部分：</strong><br><br>
+1. UI(界面)布局设计：在界面中画出你的课程表、菜单、选座界面等等等。<br>
+2.  逻辑实现：实现点击格子弹出picker，点击picker的确定按钮后在格子中插入所选择的内容。<br>
+3. 连接老师的小霸王数据库<br>
+4. 添加二维码界面
+<br><br>
+<strong>每一部分的教程顺序：</strong><br>理解老师或示例代码 ——&gt; 思考自己的需求 ——&gt; 实现逻辑步骤</p>
+
+<h2 id="toc_3">一、UI设计</h2>
+
+<p>这一部分主要就是用<code>课程2小游戏</code>的代码：</p>
+
+<div><pre><code class="language-javascript">var LIST = 4;  //设置界面为四列
+board.innerHTML = &quot;&quot;; // 让写在html里面的id为board的标签清空，一定要在html里面要先有id为board的标签！！！
+var w = document.body.clientWidth / LIST;  //document.body.clientWidth代表设备宽度，除以列数就代表一个格子的宽度
+for(var i = 0; i &lt; LIST; i ++) {
+    for(var j = 0; j &lt; LIST; j ++) {
+        var de = document.createElement(&quot;div&quot;); //创建了一个HTMLDivElement类型变量，相当于在html里面写了一个&lt;div&gt;标签
+        de.setAttribute(&#39;style&#39;, &#39;float: left;width: &#39;+w+&#39;px;height: &#39;+w+&#39;px;border: solid 1px #808080;color: #808080;&#39;); //设置各种长宽属性，如果想要改某些格子的长宽，可以在这个循环里面使用控制语句来改变长宽
+        de.setAttribute(&#39;class&#39;, &#39;div0&#39;); //设置class属性为div0，为之后改变格子颜色做准备
+        de.setAttribute(&#39;data-i&#39;, i);  //设置i坐标
+        de.setAttribute(&#39;data-j&#39;, j);    //设置j坐标
+        de.setAttribute(&#39;id&#39;,&#39;id-&#39;+i+&#39;-&#39;+j);  //设置属性ID
+        de.innerHTML = &#39;id&#39;,&#39;id-&#39;+i+&#39;-&#39;+j;  //这一句很重要！！！给de加入字符串，就是插入字，之后在实现逻辑点击picker的确定之后可能需要把字插入到这个div当中
+        de.addEventListener(&#39;tap&#39;, function(e) {getSelectedPos(this)} ); // 给de加一个监听事件getSelectedPos(this)，同时会把自己作为参数传入，通俗来讲就是点一下de标签以后会做getSelectedPos方法里面的事情
+        board.appendChild(de); //让de在html的board当中显示出来
+    };
+};</code></pre></div>
+
+<p>理解以上代码之后，你就可以复制修改以上代码，把它变成自己需要的东西了。
+因为我的div0设置的背景颜色设置的是黑色，所以以上代码的结果是这样子，相应的坐标也能够看到：
+<div align = "center">
+<img src="ui.png" width="200" height="200" style="align:center;">
+</div></p>
+
+<h2 id="toc_4">二、逻辑实现</h2>
+
+<p>这一部分主要是使用mui示例代码，可以在HBuilder当中新建一个hello mui项目：
+<div align = "center">
+<img src="hellomui.png" width="200" height="200" style="align:center;">
+</div>
+在项目的example文件夹里面找到picker.html打开，视图如下：
+<div align = "center">
+<img src="picker.png" width="200" height="200" style="align:center;">
+</div>
+我们要的就是这个：
+<div align = "center">
+<img src="pickerview.png" width="200" height="200" style="align:center;">
+</div>
+然后看picker.html里面的代码：</p>
+
+<div><pre><code class="language-none">//先配置一下，把要加的js和css文件都在相应的文件夹里面找到，加入到自己的项目文件夹当中，然后在代码中导入一下
+&lt;link href=&quot;../css/mui.picker.css&quot; rel=&quot;stylesheet&quot; /&gt;
+&lt;link href=&quot;../css/mui.poppicker.css&quot; rel=&quot;stylesheet&quot; /&gt;
+&lt;script src=&quot;../js/mui.picker.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;../js/mui.poppicker.js&quot;&gt;&lt;/script&gt;</code></pre></div>
+
+<p>然后是实现代码：</p>
+
+<div><pre><code class="language-none">//应该大部分的同学需要的就是一级选择，但因为实际有点复杂，所以建议同学可以把picker.html文件夹中的所有实现代码都复制粘贴到自己的项目当中，然后慢慢删改
+
+//写在html body当中的部分
+&lt;button id=&#39;showUserPicker&#39; class=&quot;mui-btn mui-btn-block&quot; 
+&lt;div id=&#39;userResult&#39; class=&quot;ui-alert&quot;&gt;&lt;/div&gt;
+
+//js代码
+(function($, doc) {
+    $.init();
+    $.ready(function() {
+        var _getParam = function(obj, param) {
+            return obj[param] || &#39;&#39;;
+        };
+        //普通示例
+        
+        var userPicker = new $.PopPicker();  // 新建了一个PopPicker对象，也就是弹出的那个东西，就是picker
+        //设置picker里面的数据，修改添加自己的数据也请按照以下的格式
+        userPicker.setData([{
+            value: &#39;ywj&#39;,
+            text: &#39;董事长 叶文洁&#39;
+        }, {
+            value: &#39;aaa&#39;,
+            text: &#39;总经理 艾AA&#39;
+        }, {
+            value: &#39;lj&#39;,
+            text: &#39;罗辑&#39;
+        }, {
+            value: &#39;ymt&#39;,
+            text: &#39;云天明&#39;
+        }]);
+        
+        var showUserPickerButton = doc.getElementById(&#39;showUserPicker&#39;);//获取到html当中id为showUserPicker的HTMLDivElement，就是获取到了那个按钮
+        var userResult = doc.getElementById(&#39;userResult&#39;);//获取到html当中id为showUserPicker的HTMLDivElement，获取到结果显示的div
+        //给showUserPickerButton按钮添加了监听事件
+        showUserPickerButton.addEventListener(&#39;tap&#39;, function(event) {
+            //这个方法里面是点击按钮以后会发生的事件。
+            //userPicker.show方法就是让我们刚刚设置的picker弹出来
+            userPicker.show(function(items) {
+                //这个方法里面是点击弹出picker的确定按钮后会发生的事件
+                userResult.innerText = JSON.stringify(items[0]);//让刚在获取到的结果显示的div显示picker选择的字符，也就是说JSON.stringify(items[0])调用了所显示的值，包括value和text，你可以继续调用你需要的值，比如说JSON.stringify(items[0].text)
+            });
+        }, false);
+    });
+})(mui, document);
+</code></pre></div>
+
+<p><strong><em>在理解以上部分之后你就需要写适应自己需求的代码了！</em></strong> <br>
+<strong><em>首先来确定你的需求</em></strong> <br></p>
+
+<h3 id="toc_5">需求：</h3>
+
+<p>1.点击所有的格子都会弹出picker</p>
+
+<p>2.点击picker的确定按钮之后会在相应的格子里做相应的变化，比如<code>变色</code>、<code>插字</code>等。</p>
+
+<h3 id="toc_6">实现步骤：</h3>
+
+<p>1.回到UI设计部分，你可以看到我给de添加的监听事件方法<code>getSelectedPos</code>，在这个方法里你需要获取到当前你点击的格子的坐标：</p>
+
+<div><pre><code class="language-none">var gayi
+var gayj
+                    
+function getSelectedPos(obj) {
+    gayi = obj.dataset.i; //获取被选择的格子的i坐标
+    gayj = obj.dataset.j; //获取被选择的格子的j坐标
+    console.log(&quot;gayi = &quot; + obj.dataset.i + &quot;, gayj =&quot;  + obj.dataset.j); //这里加了一个输出，可以看下控制台输出的坐标对不对
+};</code></pre></div>
+
+<p>因此在每次点击一个格子之后，就会调用一次getSelectedPos方法，把被选择的格子的坐标传给gayi和gayj。</p>
+
+<p>2.我们需要点击每个格子都会弹出picker，因此需要像在开始画UI界面那样写两个循环，然后在里面通过<code>坐标：i，j</code>来获取到每个格子，再给格子添加 show picker 的事件，然后在点击弹出picker的确定按钮后会发生的事件当中加入行为——通过<code>gayi</code>和<code>gayj</code>获取到点击的格子，然后给点击的格子innerText并且改变格子颜色。</p>
+
+<div><pre><code class="language-none">通过循环获取到的每个格子.addEventListener(&#39;tap&#39;, function(event) {
+    userPicker.show(function(items) {
+        if(JSON.stringify(items[0].text) == &quot;\&quot;不选\&quot;&quot;) {
+            通过gayi和gayj获取的格子.innerText = &quot;&quot;;
+            通过gayi和gayj获取的格子.setAttribute(&#39;class&#39;,&#39;div0&#39;);//div0是没有选择状态的class
+        } else {
+            通过gayi和gayj获取的格子.innerText = JSON.stringify(items[0].text);
+            通过gayi和gayj获取的格子.setAttribute(&#39;class&#39;,&#39;div1&#39;);
+        }
+    });
+}, false);</code></pre></div>
+
+<p>这里我在设计picker数据时，添加了一个<code>“不选”</code>的数据，当选择这个数据时候，通过判断来控制是否要给选择的格子插入字改变背景颜色。</p>
+
+<p><br><br>
+<strong>恭喜你！当你实现到这一步时，就完成了本设计的大部分功能，喝杯茶庆祝下吧！</strong>🍵
+<br><br></p>
+
+<h2 id="toc_7">三、连接小霸王数据库</h2>
+
+<p>这一部分主要参考课程10的代码，并需要通过 <a href="%E6%95%B0%E6%8D%AE%E5%BA%93%E9%93%BE%E6%8E%A5">http://www.huiwaizhi.com/Json/lixin/jl.asp
+</a>来建表<br><br>
+<strong>首先要导入lixin.js，对！就是它，前几次课签到一直要用到的文件；文件的复制和代码部分都不要忘记。</strong></p>
+
+<h3 id="toc_8">建表、建立插入查询语句</h3>
+
+<p>进入网站之后，是下面这个界面：
+<div align = "center">
+<img src="db.png" width="200" height="200" style="align:center;">
+</div>
+选择自己的学号之后，点击显示json列表，然后就可以点击新建一个json
+<div align = "center">
+<img src="sqlview.png" width="300" height="300" style="align:center;">
+</div></p>
+
+<ul>
+<li>其中学号是不能变的；<br></li>
+<li>Json调用的编号可以随意填写，之后在代码调用的链接地址中会用到这里的编号；<br></li>
+<li>参数列表，就是要传入的参数，比如之后需要把格子的坐标传入，就需要在这里添加参数，如果这里写 <code>a</code>，之后在代码中的参数名也必须是<code>a</code>；</li>
+<li>SQL编辑器，这里是写SQL语句的。</li>
+</ul>
+
+<div><pre><code class="language-none">/*建表*／
+CREATE TABLE t_t10_你的学号 ( t10_ID varchar (20) , t10_field1 varchar (50) , t10_field2 varchar (50) , t10_field3 varchar (50) )
+
+/*查询*/
+select * from t_t10_你的学号
+
+／*插入&amp;更新*／
+IF EXISTS(select * from t_t10_你的学号 WHERE t10_ID = &#39;@0&#39;) update t_t10_你的学号 set t10_field3=getdate() WHERE t10_ID = &#39;@0&#39; ELSE insert into t_t10_你的学号 (t10_ID ) values (&#39;@0&#39;)</code></pre></div>
+
+<p>请根据你自己的需求来编写相应的SQL语句</p>
+
+<p>再看代码部分：</p>
+
+<div><pre><code class="language-none">//首先需要调用一下你建表的json，把表先建起来，建起来之后就可以注释调了
+myxhr(LogByJsonStr,urlroot+&quot;j.asp?j=调用的编号&amp;s=你的学号&quot;);
+
+//查询方法
+function ShowByJsonStr(JsonStr) {
+    var JsonObj = eval(&quot;(&quot;+JsonStr+&quot;)&quot;);
+    var rows = JsonObj[&quot;rows&quot;];
+    var str = &#39;&#39;;
+    for(var i = 0; i &lt; rows.length; i ++){
+        str = &#39;&#39;;
+        str+=rows[i].t10_ID;//这里调用到了你的列名，请务必理解这一点！！！打个比方，如果你的一个表当中有一列名为position，你需要获取每条数据的position，那么你就可以通过 rows[i].position 来获取到。真的请务必理解这一点！！！
+    }
+}
+function fun_select() {
+    myxhr(ShowByJsonStr,urlroot+&quot;j.asp?j=调用的编号&amp;s=你的学号&quot;);  //第一个参数是上面的方法，意思就是将从第二个参数链接获取到的数据传入第一个参数的方法当中，然后做第一个方法中的事情
+};
+
+//插入&amp;更新的方法
+function fun_insert() {
+    var postdata=&quot;&quot;;
+    postdata += &quot;a=&quot; + &quot;1&quot;; //这里加入了参数,拿上面的插入&amp;更新作比方，你做的事情就是先查询一下表里面有没有t10_ID=1的数据，有的话就更新一下set t10_field3=getdate()，没有的话就插入一条t10_ID=1的数据
+    postdata += &quot;&amp;b=&quot; + &quot;时间&quot;; //这是第二个参数，连接起来需要一个&amp;符号
+    myxhr(LogByJsonStr,urlroot+&quot;j.asp?j=调用的编号&amp;s=你的学号&quot;,postdata);
+};</code></pre></div>
+
+<h3 id="toc_9">思考你的需求</h3>
+
+<p>老师大概需通过数据库实现的功能就是，打开App选择了一些，关闭再打开的时候需要获取到之前选择的那些。</p>
+
+<h3 id="toc_10">实现步骤</h3>
+
+<p>你需要在每次点击picker的确定按钮的时候也把数据传入到数据库当中：</p>
+
+<div><pre><code class="language-none">//继续之前逻辑部分的代码
+
+通过循环获取到的每个格子.addEventListener(&#39;tap&#39;, function(event) {
+    userPicker.show(function(items) {
+        if(JSON.stringify(items[0].text) == &quot;\&quot;不选\&quot;&quot;) {
+            通过gayi和gayj获取的格子.innerText = &quot;&quot;;
+            通过gayi和gayj获取的格子.setAttribute(&#39;class&#39;,&#39;div0&#39;);//div0是没有选择状态的class
+            var posStr = String(gayi) + String(gayj);// 在这里我将坐标封装成一个字符串，然后直接传入到数据库当中，你也可以像老师说的那样，把坐标i，j作为int类型分别传入数据库当中
+            fun_insert(posStr,&quot;不选&quot;) 
+        } else {
+            通过gayi和gayj获取的格子.innerText = JSON.stringify(items[0].text);
+            通过gayi和gayj获取的格子.setAttribute(&#39;class&#39;,&#39;div1&#39;);
+            var posStr = String(iSelected) + String(jSelected);
+            fun_insert(posStr,JSON.stringify(items[0].text));
+        }
+    });
+}, false);</code></pre></div>
+
+<p>在界面初始化，也就是在画好格子之后需要从数据库读取数据，看一下每个格子的数据：</p>
+
+<div><pre><code class="language-none">function ShowByJsonStr(JsonStr){
+    var JsonObj = eval(&quot;(&quot;+JsonStr+&quot;)&quot;);
+    var rows = JsonObj[&quot;rows&quot;];
+    var posStr = &#39;&#39;;
+    var classStr = &#39;&#39;;
+    for(var i=0; i&lt;rows.length; i++){
+        posStr = &#39;&#39;;
+        posStr += rows[i].divPos;
+        classStr = &#39;&#39;;
+        classStr += rows[i].className;
+        //如果格子是有数据的，不是&quot;不选&quot;，那么要把字插入，改变背景颜色
+        if(classStr != &quot;不选&quot;) {
+            var gayi = Number(posStr.substr(0, 1));  //把封装为string类型的坐标拆解分析出来
+            var gayj = Number(posStr.substr(1, 2));
+            var changedDiv = document.getElementById(&#39;id-&#39;+ gayi +&#39;-&#39;+ gayj);
+            changedDiv.innerText = classStr;
+            changedDiv.setAttribute(&#39;class&#39;,&#39;div1&#39;); // div1是选择状态的class
+        }
+    };
+}
+        
+myxhr(ShowByJsonStr,urlroot+&quot;j.asp?j=调用的编号&amp;s=你的学号&quot;);  //调用！</code></pre></div>
+
+<p><strong>到这里基本就完成了所有的内容了，如果你已经到了这里，完全不用担心，二维码的部分十分十分十分简单！！！一鼓作气做完它吧！！！</strong>
+<br><br></p>
+
+<h2 id="toc_11">四、二维码</h2>
+
+<ol>
+<li>把最后山寨微信当中的<code>info.html</code>复制粘贴到自己的项目中；</li>
+<li>导入 <code>qrcode.min.js</code>，代码和文件部分同样都不要忘记；</li>
+<li><code>&lt;a href=&quot;info.html&quot;&gt;&lt;button class=&quot;mui-btn-blue&quot;&gt;按钮&lt;/button&gt;&lt;/a&gt; //在html的body当中加入以此代码</code></li>
+<li>在 info.html 文件中修改自己的链接、标题、图片、名字、座右铭</li>
+</ol>
+
+<div><pre><code class="language-none">&lt;h1 class=&quot;mui-title&quot;&gt;你的标题&lt;/h1&gt;
+
+&lt;p id=&quot;debug&quot;&gt;你的姓名&lt;br&gt;
+                    你的座右铭&lt;/p&gt;
+
+var qrcode = new QRCode(&#39;qrcode2&#39;, {
+                text: &#39;你的链接&#39;,
+                width: 256,
+                height: 256,
+                colorDark : &#39;#000000&#39;,
+                colorLight : &#39;#ffffff&#39;,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+            
+            
+var i2=new Image();
+i2.src = &#39;img/你的图片.png&#39;;</code></pre></div>
+
+<p>以上代码都在文件中存在，你只需要找到位置，修改我的中文字部分就可以。</p>
+
+<h2 id="toc_12">结束</h2>
+
+<p>🦉希望本教程可以帮助到你🍣</p>
+
+
+
+
+</body>
+
+</html>
