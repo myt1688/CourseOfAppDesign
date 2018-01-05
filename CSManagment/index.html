@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/mui.picker.css" rel="stylesheet" />
+	<link href="css/mui.poppicker.css" rel="stylesheet" />
+    <style type="text/css">
+    		.div0{background: gray;text-align:center;}
+    		.div1{background: yellow;align="center"}
+    		.div2{background: white;}
+    </style>
+</head>
+<body>
+	<div class="mui-content" id = "board">
+		<div class="div0" style="float: left;width: 60px;height: 20px;border: solid 1px #808080;color: #808080;"></div>
+		<div class="div2" style="float: left;width: 60px;height: 20px;border: solid 1px #808080;color: #808080;">周一</div>
+		<div class="div2" style="float: left;width: 60px;height: 20px;border: solid 1px #808080;color: #808080;">周二</div>
+		<div class="div2" style="float: left;width: 60px;height: 20px;border: solid 1px #808080;color: #808080;">周三</div>
+		<div class="div2" style="float: left;width: 60px;height: 20px;border: solid 1px #808080;color: #808080;">周四</div>
+		<div class="div2" style="float: left;width: 60px;height: 20px;border: solid 1px #808080;color: #808080;">周五</div>
+	</div>
+	<div class="mui-content">
+		<div class="mui-content-padded">
+			
+			<br><br><br><br><br><br><br><br><br><br>
+			<div id='userResult' class="ui-alert"></div>
+			<br><br>
+			<a href="info.html"><button class="mui-btn-blue">显示我的二维码</button></a>
+			<a href="info2.html"><button class="mui-btn-blue">显示我pos数据</button></a>
+		</div>
+		
+	</div>
+</body>
+<script src="js/mui.min.js"></script>
+<script src="js/mui.picker.js"></script>
+<script src="js/mui.poppicker.js"></script>
+<script type="text/javascript" src="js/lixin.js" ></script>
+<script type="text/javascript" charset="utf-8">
+      	mui.init();
+//    	console.log("test!");
+			//建表
+//    	myxhr(LogByJsonStr,urlroot+"j.asp?j=c04&s=2015135136");
+      	function fun_insert(divPosition, className){
+			console.log(divPosition);
+			console.log(className);
+     		var postdata="";
+			postdata += "a=" + divPosition;
+			postdata += "&b=" + className;
+ 			myxhr(LogByJsonStr,urlroot+"j.asp?j=i02&s=2015135136",postdata);
+      	};
+      	
+      	function fun_insertCourseData(id, className){
+//			console.log(id);
+			console.log(className);
+      		//mui.toast('fgjf');
+     		var postdata="";
+			postdata += "a=" + id;
+			postdata += "&b=" + className;
+ 			myxhr(LogByJsonStr,urlroot+"j.asp?j=i03&s=2015135136",postdata);
+      	};
+      	
+      	function ShowByJsonStr(JsonStr){
+			var JsonObj = eval("("+JsonStr+")");
+			var rows = JsonObj["rows"];
+			var posStr = '';
+			var classStr = '';
+			for(var i=0; i<rows.length; i++){
+      			posStr = '';
+      			posStr += rows[i].divPos;
+      			classStr = '';
+      			classStr += rows[i].className;
+//    			de.innerHTML = str;
+				if(classStr != "不选") {
+					console.log("i坐标为" + posStr.substr(0, 1) + ",j坐标为" + posStr.substr(1, 2) + "的课程为：" + classStr);
+					var changedI = Number(posStr.substr(0, 1));
+					var changedJ = Number(posStr.substr(1, 2))
+					var changedDiv = document.getElementById('id-'+changedI+'-'+changedJ);
+					changedDiv.innerText = classStr;
+					changedDiv.setAttribute('class','div1');
+				}
+      			
+      		};
+      	}
+
+		(function($, doc) {
+				$.init();
+				$.ready(function() {
+					var _getParam = function(obj, param) {
+						return obj[param] || '';
+					};
+//					fun_insert("11","不选")
+					//*****DATA*****
+					myxhr(ShowByJsonStr,urlroot+"j.asp?j=s03&s=2015135136");
+					
+					var courses = new Array("计算机网络","互联网应用与开发技术","电子商务系统分析与设计","移动网络应用开发","不选");
+					for(var i = 0; i < courses.length; i ++) {
+						var id = String(i);
+						console.log(courses[i]);
+						fun_insertCourseData(id,courses[i]);
+					}
+					
+					var userPicker = new $.PopPicker();
+					userPicker.setData([{
+						value: 1,
+						text: courses[0]
+					}, {
+						value: 2,
+						text: courses[1]
+					}, {
+						value: 3,
+						text: courses[2]
+					}, {
+						value: 4,
+						text: courses[3]
+					}, {
+						value: 5,
+						text: courses[4]
+					}]);
+					
+					
+					//******UI*****
+					board.innerHTML = "";
+					var LIST = 6;
+					var w = (document.body.clientWidth-25) / 5;
+					
+					for(var i = 0; i < 3; i ++) {
+//						if(i == 0) continue;
+						for(var j = 0; j < LIST; j ++) {
+							var de = document.createElement("div");
+							
+							if(i == 0 && j == 0){
+								de.setAttribute('style', 'float: left;width: 25px;height: 25px;border: solid 1px #000000;color: #000000;align="center"');
+								de.setAttribute('class', 'div0', '');
+							}else if(i == 0 && j != 0) {
+								de.setAttribute('style', 'float: left;width: '+w+'px;height: 25px;border: solid 1px #000000;color: #000000;align="center"');
+								de.setAttribute('class', 'div0', '');
+								if(i == 0 && j == 1) de.innerHTML = "周一";
+								if(i == 0 && j == 2) de.innerHTML = "周二";
+								if(i == 0 && j == 3) de.innerHTML = "周三";
+								if(i == 0 && j == 4) de.innerHTML = "周四";
+								if(i == 0 && j == 5) de.innerHTML = "周五";
+							} else if(j == 0 && i != 0){
+								de.setAttribute('style', 'float: left;width: 25px;height: 85px;border: solid 1px #000000;color: #000000;align="center"word-wrap: break-word;letter-spacing:20px;');
+								de.setAttribute('class', 'div0', '');
+								if(i == 1 && j == 0) de.innerHTML = "上午";
+								if(i == 2 && j == 0) de.innerHTML = "下午";
+							} else {
+//								console.log(i + " , " + j);
+								var posStr = String(i) + String(j);
+//								console.log("posStr:" + posStr);
+//								fun_insert(posStr,"不选")
+								de.setAttribute('style', 'float: left;width: '+w+'px;height: 85px;border: solid 1px #000000;color: #000000;align="center"');
+								de.setAttribute('class', 'div2', '');
+							}
+      						de.setAttribute('data-i', i);
+      						de.setAttribute('data-j', j);
+      						de.setAttribute('id','id-'+i+'-'+j);
+//    						de.innerHTML = 'id','id-'+i+'-'+j;
+      						de.addEventListener('tap', function(e) {observer(this)} );
+      						board.appendChild(de);
+      					};
+      				};
+      		
+      		
+      				//*****OPERATION*****
+      				var iSelected = 0;
+      				var jSelected = 0;
+      				
+      				function observer(obj) {
+						iSelected = obj.dataset.i;
+						jSelected = obj.dataset.j;
+						console.log("iSelected = " + obj.dataset.i + ",jSelected="  + obj.dataset.j);
+      				};
+      
+      				for(var i = 1; i < 3; i ++) {
+						for(var j = 1; j < LIST; j ++) {
+							var showUserPickerButton = doc.getElementById('id-'+i+'-'+j);
+							var userResult = doc.getElementById('userResult');
+							showUserPickerButton.addEventListener('tap', function(event) {
+								userPicker.show(function(items) {
+//									console.log("call once" + showUserPickerButton.dataset.i + "," + showUserPickerButton.dataset.j);
+									if(JSON.stringify(items[0].text) == "\"不选\"") {
+										var changedDiv = doc.getElementById('id-'+iSelected+'-'+jSelected);
+										changedDiv.innerText = "";
+      									changedDiv.setAttribute('class','div2');
+      									var posStr = String(iSelected) + String(jSelected);
+      									fun_insert(posStr,"不选")
+									} else {
+										var changedDiv = doc.getElementById('id-'+iSelected+'-'+jSelected);
+      									changedDiv.innerText = JSON.stringify(items[0].text);
+      									changedDiv.setAttribute('class','div1');
+      									var posStr = String(iSelected) + String(jSelected);
+      									fun_insert(posStr,JSON.stringify(items[0].text));
+									}
+									userResult.innerText = JSON.stringify(items[0].text);
+								});
+							}, false);
+						}
+					}
+      				
+      				
+				});
+		})(mui, document);
+</script>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>我的二维码</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="css/mui.min.css">
+		<!--App自定义的css-->
+		<!-- <link rel="stylesheet" type="text/css" href="css/app.css" /> -->
+		<style>
+			p {
+				text-indent: 22px;
+				padding: 5px 8px;
+			}
+			html,
+			body,
+			.mui-content {
+				background-color: #fff;
+			}
+			h4 {
+				margin-left: 5px;
+			}
+			.qrcode {
+				/*position: absolute;*/
+				top: 50px;
+				/*left: 50%;*/
+				width: 100%;
+				/*-webkit-transform: translate(-50%, 0);
+				transform: translate(-50%, 0);*/
+				text-align: center;
+			}
+			.qrcode img {
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">扫一扫</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-content-padded">
+				<div id="qrcode2"  class="qrcode"></div>
+				<!--<h4 style="margin-top:10px;">mui</h4>-->
+				<p id="debug">马宇韬 2015135136<br>
+					扫一扫查看我的数据库数据</p>
+				<p style="text-align: center;color: #ccc;text-indent: 0;">verison：<span id="version">1.0.0</span></p>	
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/qrcode.min.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init({
+				gestureConfig: {
+					longtap: true
+				},
+				swipeBack: true //启用右滑关闭功能
+			});
+			//处理点击事件，需要打开原生浏览器
+			mui('body').on('tap', 'a', function(e) {
+				var href = this.getAttribute('href');
+				if (href) {
+					if (window.plus) {
+						plus.runtime.openURL(href);
+					} else {
+						location.href = href;
+					}
+				}
+			});
+			
+			var qrcode = new QRCode('qrcode2', {
+  				text: 'http://www.huiwaizhi.com/json/lixin/j.asp?j=s03&s=2015135136',
+  				width: 256,
+  				height: 256,
+  				colorDark : '#000000',
+  				colorLight : '#ffffff',
+  				correctLevel : QRCode.CorrectLevel.H
+			});
+						
+			var c= document.getElementById('qrcode2').children[0];
+			var i0= document.getElementById('qrcode2').children[1];
+			var ctx = c.getContext('2d');
+			var base64=[];
+			var i2=new Image();
+			//i2.src = 'img/p1.png';
+//			i2.src ='data:image/gif;base64,R0lGODlhMAAwAPf/AKzG7MLS6ABC0ql/qP82AOvz+zR32VGI3QRTygA8zM/S3tObSf9PTwFT5bfF05KhrQBFzoyx6CRIs0B82nyk4zCE9/9ra0eB2f8tLcWys2OV4dVURyhawuTs+GaV3v/JyZK17L7S7vWqJrbT+v/j49Th9pBTgKG76Jy86/JRKgAnywA90efTygBQ0QA68KjD7Ieq4pGz5gBJ0XSb4/0XFv3+/sra8fL2+wBU8v/pkpu54/9VAE5Qnv708m2d4rnN7gBKzs97UwBH5//XNGl6rgFN0f3z7QBY0xVe1tjk9jVp1wFV1f+Xl1Z3qhBh35fD/f779XB9lgBQ1PuiG9bCSKTC7sXW8gFT27fL8QBU0nuKs/+7uwBVzwA2ztvHvf90dP7LALk1UwBN1Yqo5QFW0rHJ7rfO77bJ7fX5/nqd3QtZ1QAwz6HA6f+XAABU/czc8rDD7ABE/M3d9CJl1MHU8mqS4f9jAABP2YWt6MHb/MNfWyRr1vPu7Jx6fgFWzwBY2d/p+cfa9FqP3+3a0hNVzsDS8P9uAHaj5C9z3N3p9itu16/K7v+oAP+RALitu5e46AA82qTC6Pft5v8DA/8SCwBI1fj6/X6n5f8LCwArzwZW1QNU0QFVzwFX0/8LAP8rAP9oAP+cAP/TAABA2/r8/v1rD6fG73m0/9Hg8/+wG//mXKGOYXel6cvc8E50rf/26NJ+I4ZeVeaXK5xwRghb2bVaYv/ker1sSZqnyp237NZgGKa/6LO916jF5+8aH9IzRfIPFP94Xf/n58Xh/oCpni9v2KCWq+PPyIGp6NzIOvPRHgde8MCfYf3t5tzm9v/uqXeTyP/54rOvcGGU52iY4sjY8NBgTwAywf/zxfCPCgFX0QA/y5WTc2GS36uZWFOB2CFs8YCXzeRiEEl+xOV3NvRwbrBiOIW09ePLQcja9f/DbczZ8u7j3v/j0fuWAf9ED//4+P/Hq0BgsS5jzFpuo1BzufXx7v+pqSJi2iZv2P+RTAdT1QdU0wFV0v8AAP///yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS4zLWMwMTEgNjYuMTQ1NjYxLCAyMDEyLzAyLzA2LTE0OjU2OjI3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1wTU06T3JpZ2luYWxEb2N1bWVudElEPSJ4bXAuZGlkOjZGNkQ2ODk2NzU3REU3MTE4REFGQkE1OEYwQ0M1MThDIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjE4Rjk2MjYzN0U2MTExRTdBRjk4QkU0QTNGNzc3OUI0IiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjE4Rjk2MjYyN0U2MTExRTdBRjk4QkU0QTNGNzc3OUI0IiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzYgKFdpbmRvd3MpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MzAxMUFDMkE3RDdERTcxMThEQUZCQTU4RjBDQzUxOEMiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NkY2RDY4OTY3NTdERTcxMThEQUZCQTU4RjBDQzUxOEMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4B//79/Pv6+fj39vX08/Lx8O/u7ezr6uno5+bl5OPi4eDf3t3c29rZ2NfW1dTT0tHQz87NzMvKycjHxsXEw8LBwL++vby7urm4t7a1tLOysbCvrq2sq6qpqKempaSjoqGgn56dnJuamZiXlpWUk5KRkI+OjYyLiomIh4aFhIOCgYB/fn18e3p5eHd2dXRzcnFwb25tbGtqaWhnZmVk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';
+			//i2.src = 'data:image/gif;base64,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';
+			i2.onload = function(){
+			    ctx.drawImage(i2,92,92,72,72); 
+			    //base64.push(c.toDataURL("image/png")); //这两行和下面两行效果等价
+			    //i0.src= base64[0];
+				var image = c.toDataURL("image/png").replace("image/png", "image/octet-stream"); 
+				i0.src=image; // it will save locally 
+				};
+
+			i0.addEventListener('longtap', function() {
+				plus.nativeUI.actionSheet({
+					cancel: '取消',
+					buttons: [{
+						title: '保存到相册'
+					}]
+				}, function(e) {
+					var index = e.index;
+					if (e.index === 1) {
+						var bitmap = new plus.nativeObj.Bitmap("bmqrcode");
+						bitmap.loadBase64Data(i0.src.replace("data:image/octet-stream;base64,", ""), function(){
+							bitmap.save( "_doc/yubanqrcode.jpg"
+							,{}
+							,function(i){
+							    console.log('保存图片成功：'+JSON.stringify(i));
+												plus.gallery.save("_doc/yubanqrcode.jpg", function() {
+													mui.toast('保存成功');
+												}, function() {
+													mui.toast('保存失败，请重试！');
+												});
+							    
+							}
+							,function(e){
+							    console.log('保存图片失败：'+JSON.stringify(e));
+							});
+							    console.log("加载Base64图片数据成功");
+							}, function(){
+							    console.log('加载Base64图片数据失败：'+JSON.stringify(e));
+							}); 
+						void bitmap.clear();
+					}
+				});
+			});
+
+		</script>
+	</body>
+
+</html>
